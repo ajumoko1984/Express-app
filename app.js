@@ -6,10 +6,10 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 const mongodb = 'mongodb+srv://New-express-user_13:user_13@cluster0.6xyca.mongodb.net/item-database?retryWrites=true&w=majority';
 mongoose.connect(mongodb, { useNewUrlParser: true, useUnifiedTopology: true } ).then(() =>{
-    console.log('connect');
+    console.log('connected');
     app.listen(4000);
 })
-app.set('view engine', 'ejs'); 
+app.set('view engine', 'ejs')
 
 app.get('/', (req, res) => {
     res.redirect('/get-items');
