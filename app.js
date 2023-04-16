@@ -17,8 +17,7 @@ app.get('/', (req, res) => {
 })
 app.get('/get-items',(req,res)=>{
     
-    Item.find().then(result=>{
-        
+    Item.find().then(result=>{        
         res.render('index', { items: result });
     }).catch(err => console.log(err))
 })
@@ -31,7 +30,6 @@ console.log(req.body)
   item.save().then(() => {
       res.redirect('/get-items')
   }).catch(err => console.log(err))
-
 })
 app.get('/items/:id', (req, res) => {
     const id = req.params.id;
@@ -43,17 +41,14 @@ app.get('/items/:id', (req, res) => {
 app.delete('/items/:id', (req, res) => {
     const id = req.params.id;
     Item.findByIdAndDelete(id).then(result => {
-        res.json({ redirect: '/get-items' })
-  
+        res.json({ redirect: '/get-items'})  
     })
 })
 app.put('/items/:id', (req, res) => {
     const id = req.params.id;
     Item.findByIdAndUpdate(id, req.body).then(result => {
-        res.json({ msg: 'Updated Successfully  ' })
-  
+        res.json({ msg: 'Updated Successfully  ' })  
     }); 
-
 })
 app.use((req, res) => { 
     res.render('404');
